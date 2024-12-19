@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Age & Gender Prediction</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>Upload an Facial Image to Predict Age and Gender</h1>
+    <form method="POST" enctype="multipart/form-data">
+        <input type="file" name="file" accept="image/*" required>
+        <button type="submit">Predict</button>
+    </form>
+
+    {% if age is not none and gender is not none %}
+        <h2>Predicted Age: {{ age }}</h2>
+        <h2>Predicted Gender: {{ gender }}</h2>
+        <img src="{{ image_url }}" alt="Uploaded Image" style="max-width: 400px; position: relative; left: 50%; transform: translate(-50%);">
+    {% endif %}
+</body>
+</html>
